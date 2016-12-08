@@ -109,7 +109,11 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.socre_lbl);
 			this.Controls.Add(this.board);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.KeyPreview = true;
+			this.MaximizeBox = false;
+			this.MaximumSize = new System.Drawing.Size(344, 400);
+			this.MinimumSize = new System.Drawing.Size(344, 400);
 			this.Name = "SnakeGame";
 			this.Text = "s|n\'s Endless Snake Game";
 			this.Load += new System.EventHandler(this.Form1_Load);
