@@ -28,13 +28,16 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.board = new System.Windows.Forms.Panel();
 			this.socre_lbl = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.time_lbl = new System.Windows.Forms.Label();
-			this.minus10 = new System.Windows.Forms.Button();
-			this.plus10 = new System.Windows.Forms.Button();
+			this.player1_score_lbl = new System.Windows.Forms.Label();
+			this.player2_score_lbl = new System.Windows.Forms.Label();
+			this.game_clock = new System.Windows.Forms.Timer(this.components);
+			this.game_time_lbl = new System.Windows.Forms.Label();
+			this.reset_btn = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// board
@@ -48,74 +51,93 @@
 			// socre_lbl
 			// 
 			this.socre_lbl.AutoSize = true;
-			this.socre_lbl.Location = new System.Drawing.Point(265, 9);
+			this.socre_lbl.Location = new System.Drawing.Point(264, 9);
 			this.socre_lbl.Name = "socre_lbl";
-			this.socre_lbl.Size = new System.Drawing.Size(47, 13);
+			this.socre_lbl.Size = new System.Drawing.Size(48, 13);
 			this.socre_lbl.TabIndex = 1;
-			this.socre_lbl.Text = "Score: 0";
+			this.socre_lbl.Text = "Player 2:";
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(9, 9);
+			this.label1.Location = new System.Drawing.Point(12, 9);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(33, 13);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Time:";
+			this.label1.Size = new System.Drawing.Size(48, 13);
+			this.label1.TabIndex = 2;
+			this.label1.Text = "Player 1:";
 			// 
-			// time_lbl
+			// player1_score_lbl
 			// 
-			this.time_lbl.AutoSize = true;
-			this.time_lbl.Location = new System.Drawing.Point(84, 9);
-			this.time_lbl.Name = "time_lbl";
-			this.time_lbl.Size = new System.Drawing.Size(25, 13);
-			this.time_lbl.TabIndex = 4;
-			this.time_lbl.Text = "100";
+			this.player1_score_lbl.AutoSize = true;
+			this.player1_score_lbl.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.player1_score_lbl.Location = new System.Drawing.Point(12, 33);
+			this.player1_score_lbl.Name = "player1_score_lbl";
+			this.player1_score_lbl.Size = new System.Drawing.Size(0, 16);
+			this.player1_score_lbl.TabIndex = 3;
 			// 
-			// minus10
+			// player2_score_lbl
 			// 
-			this.minus10.CausesValidation = false;
-			this.minus10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.minus10.Location = new System.Drawing.Point(41, 4);
-			this.minus10.Name = "minus10";
-			this.minus10.Size = new System.Drawing.Size(37, 23);
-			this.minus10.TabIndex = 5;
-			this.minus10.TabStop = false;
-			this.minus10.Text = "-10";
-			this.minus10.UseVisualStyleBackColor = true;
-			this.minus10.Click += new System.EventHandler(this.minus10_Click);
+			this.player2_score_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.player2_score_lbl.AutoSize = true;
+			this.player2_score_lbl.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.player2_score_lbl.Location = new System.Drawing.Point(292, 33);
+			this.player2_score_lbl.Name = "player2_score_lbl";
+			this.player2_score_lbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+			this.player2_score_lbl.Size = new System.Drawing.Size(56, 16);
+			this.player2_score_lbl.TabIndex = 4;
+			this.player2_score_lbl.Text = "123123";
+			this.player2_score_lbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
-			// plus10
+			// game_clock
 			// 
-			this.plus10.CausesValidation = false;
-			this.plus10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.plus10.Location = new System.Drawing.Point(115, 4);
-			this.plus10.Name = "plus10";
-			this.plus10.Size = new System.Drawing.Size(35, 23);
-			this.plus10.TabIndex = 6;
-			this.plus10.TabStop = false;
-			this.plus10.Text = "+10";
-			this.plus10.UseVisualStyleBackColor = true;
-			this.plus10.Click += new System.EventHandler(this.plus10_Click);
+			this.game_clock.Enabled = true;
+			this.game_clock.Interval = 1000;
+			this.game_clock.Tick += new System.EventHandler(this.game_clock_Tick);
+			// 
+			// game_time_lbl
+			// 
+			this.game_time_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+			this.game_time_lbl.AutoSize = true;
+			this.game_time_lbl.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.game_time_lbl.Location = new System.Drawing.Point(137, 6);
+			this.game_time_lbl.Name = "game_time_lbl";
+			this.game_time_lbl.Size = new System.Drawing.Size(0, 16);
+			this.game_time_lbl.TabIndex = 5;
+			// 
+			// reset_btn
+			// 
+			this.reset_btn.FlatAppearance.BorderSize = 0;
+			this.reset_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.reset_btn.Location = new System.Drawing.Point(136, 33);
+			this.reset_btn.Name = "reset_btn";
+			this.reset_btn.Size = new System.Drawing.Size(45, 20);
+			this.reset_btn.TabIndex = 6;
+			this.reset_btn.Text = "Reset";
+			this.reset_btn.UseVisualStyleBackColor = true;
+			this.reset_btn.Click += new System.EventHandler(this.reset_btn_Click);
 			// 
 			// BoxFeverGame
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(328, 362);
-			this.Controls.Add(this.plus10);
-			this.Controls.Add(this.minus10);
-			this.Controls.Add(this.time_lbl);
+			this.Controls.Add(this.reset_btn);
+			this.Controls.Add(this.game_time_lbl);
+			this.Controls.Add(this.player2_score_lbl);
+			this.Controls.Add(this.player1_score_lbl);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.socre_lbl);
 			this.Controls.Add(this.board);
+			this.DoubleBuffered = true;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(344, 400);
 			this.MinimumSize = new System.Drawing.Size(344, 400);
 			this.Name = "BoxFeverGame";
-			this.Text = "s|n\'s Endless Player Game";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "s|n\'s Box Fever";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
 			this.ResumeLayout(false);
@@ -128,9 +150,11 @@
 		private System.Windows.Forms.Panel board;
 		private System.Windows.Forms.Label socre_lbl;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label time_lbl;
-		private System.Windows.Forms.Button minus10;
-		private System.Windows.Forms.Button plus10;
+		private System.Windows.Forms.Label player1_score_lbl;
+		private System.Windows.Forms.Label player2_score_lbl;
+		private System.Windows.Forms.Timer game_clock;
+		private System.Windows.Forms.Label game_time_lbl;
+		private System.Windows.Forms.Button reset_btn;
 	}
 }
 

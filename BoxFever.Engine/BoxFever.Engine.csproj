@@ -51,12 +51,16 @@
     <Compile Include="BoxFeverGame.Designer.cs">
       <DependentUpon>BoxFeverGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Block.cs" />
+    <Compile Include="Util\GameConstants.cs" />
+    <Compile Include="Models\Implementations\StationaryBlock.cs" />
+    <Compile Include="Models\Interfaces\IBlock.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Direction.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\BlocksExtender.cs" />
+    <Compile Include="Util\KeysExtender.cs" />
     <EmbeddedResource Include="BoxFeverGame.resx">
       <DependentUpon>BoxFeverGame.cs</DependentUpon>
     </EmbeddedResource>

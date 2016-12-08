@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Drawing;
+using BoxFever.Engine.Models.Implementations;
+using BoxFever.Engine.Models.Interfaces;
+using BoxFever.Engine.Util;
 
 namespace BoxFever.Engine.Models
 {
@@ -6,20 +10,19 @@ namespace BoxFever.Engine.Models
 	{
 		public int Width { get; set; }
 		public int Height { get; set; }
-		public static int Scale { get; set; } = 5;
 
 		private readonly int _cols;
 		private readonly int _rows;
 
-		public Block Food { get; set; }
+		public IBlock Food { get; set; }
 
 		public Board(int width, int height)
 		{
-			Width = width/Scale;
-			Height = height/Scale;
+			Width = width/GameConstants.Scale;
+			Height = height/GameConstants.Scale;
 
-			_cols = Height;
-			_rows = Width;
+			_cols = Height - GameConstants.BlockSize;
+			_rows = Width - GameConstants.BlockSize;
 
 			PlaceRandomFood();
 		}
@@ -30,7 +33,15 @@ namespace BoxFever.Engine.Models
 			var rX = (int)Math.Floor((decimal) rnd.Next(0, _cols));
 			var rY = (int)Math.Floor((decimal) rnd.Next(0, _rows));
 
-			Food = new Block {X = rX, Y = rY};
+			if (Food == null)
+			{
+				Food = new StationaryBlock {X = rX, Y = rY, Color = Color.Red};
+			}
+			else
+			{
+				Food.X = rX;
+				Food.Y = rY;
+			}
 		}
 	}
 }

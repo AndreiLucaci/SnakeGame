@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using BoxFever.Engine.Models.Interfaces;
 
 namespace BoxFever.Engine.Models
 {
-	public class Player
+	public class Player : IBlock
 	{
 		private readonly int _bordWidth;
 		private readonly int _bordHeight;
 		private Direction _currentDirection;
+		private int _score;
+
+		public string Name { get; set; }
 
 		public Direction CurrentDirection
 		{
@@ -15,15 +20,32 @@ namespace BoxFever.Engine.Models
 			set { Direction(value); }
 		}
 
+		public int Score
+		{
+			get { return _score; }
+			set
+			{
+				_score = value;
+				PlayerScores?.Invoke(this, new PlayerScoresEventArgs(value));
+			}
+		}
+
 		public int X { get; set; }
 		public int Y { get; set; }
+		public int PrevX { get; set; }
+		public int PrevY { get; set; }
+		public Color Color { get; set; }
 		public int MX { get; set; }
 		public int MY { get; set; }
 
-		public Player(int bordWidth, int bordHeight)
+		public event EventHandler<PlayerScoresEventArgs> PlayerScores;
+
+		public Player(int bordWidth, int bordHeight, string name, Color color)
 		{
-			_bordWidth = bordWidth;
-			_bordHeight = bordHeight;
+			Name = name;
+			Color = color;
+			_bordWidth = bordWidth -1;
+			_bordHeight = bordHeight -1;
 			X = 0;
 			Y = 0;
 			MX = 1;
@@ -33,6 +55,8 @@ namespace BoxFever.Engine.Models
 
 		public void Update()
 		{
+			PrevX = X;
+			PrevY = Y;
 			X = ((X + MX) + _bordWidth) % _bordWidth; 
 			Y = ((Y + MY) + _bordHeight) % _bordHeight;
 		}
@@ -82,6 +106,21 @@ namespace BoxFever.Engine.Models
 		private bool IsOppositeDirection(Direction direction)
 		{
 			return _opositeDirections[direction] == _currentDirection;
+		}
+
+		public override string ToString()
+		{
+			return Name;
+		}
+	}
+
+	public class PlayerScoresEventArgs : EventArgs
+	{
+		public readonly int Value;
+
+		public PlayerScoresEventArgs(int value)
+		{
+			Value = value;
 		}
 	}
 }
