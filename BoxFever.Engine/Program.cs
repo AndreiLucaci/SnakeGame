@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Snake.Engine
+namespace BoxFever.Engine
 {
 	static class Program
 	{
@@ -16,7 +13,7 @@ namespace Snake.Engine
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new SnakeGame());
+			Application.Run(new BoxFeverGame());
 		}
 	}
 }

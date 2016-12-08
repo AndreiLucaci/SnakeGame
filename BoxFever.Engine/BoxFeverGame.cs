@@ -3,22 +3,22 @@ using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Snake.Engine.Models;
+using BoxFever.Engine.Models;
 
-namespace Snake.Engine
+namespace BoxFever.Engine
 {
-	public partial class SnakeGame : Form
+	public partial class BoxFeverGame : Form
 	{
 		private readonly Board _board;
-		private readonly Models.Snake _snake;
+		private readonly Player _player;
 		private int _time = 100;
 		private int _score;
 
-		public SnakeGame()
+		public BoxFeverGame()
 		{
 			InitializeComponent();
 			_board = new Board(board.Width, board.Height);
-			_snake = new Models.Snake(Board.Scale, _board.Width, _board.Height);
+			_player = new Player(_board.Width, _board.Height);
 			Task.Factory.StartNew(Draw, TaskCreationOptions.LongRunning);
 			PaintFood();
 			board.Focus();
@@ -43,8 +43,8 @@ namespace Snake.Engine
 
 		private void UpdateView()
 		{
-			_snake.Update();
-			DrawRectangle(_snake.X, _snake.Y);
+			_player.Update();
+			DrawRectangle(_player.X, _player.Y);
 		}
 
 		private void DrawRectangle(int x, int y)
@@ -106,7 +106,7 @@ namespace Snake.Engine
 					direction = Direction.Same;
 					break;
 			}
-			_snake.CurretnDirection = direction;
+			_player.CurrentDirection = direction;
 			e.Handled = true;
 		}
 

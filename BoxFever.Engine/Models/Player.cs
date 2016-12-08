@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Snake.Engine.Models
+namespace BoxFever.Engine.Models
 {
-	public class Snake
+	public class Player
 	{
-		private readonly int _scale;
 		private readonly int _bordWidth;
 		private readonly int _bordHeight;
-		private Direction _curretnDirection;
+		private Direction _currentDirection;
 
-		public Direction CurretnDirection
+		public Direction CurrentDirection
 		{
-			get { return _curretnDirection; }
+			get { return _currentDirection; }
 			set { Direction(value); }
 		}
 
@@ -21,16 +20,15 @@ namespace Snake.Engine.Models
 		public int MX { get; set; }
 		public int MY { get; set; }
 
-		public Snake(int scale, int bordWidth, int bordHeight)
+		public Player(int bordWidth, int bordHeight)
 		{
-			_scale = scale;
 			_bordWidth = bordWidth;
 			_bordHeight = bordHeight;
 			X = 0;
 			Y = 0;
 			MX = 1;
 			MY = 0;
-			_curretnDirection = Models.Direction.LEFT;
+			_currentDirection = Models.Direction.LEFT;
 		}
 
 		public void Update()
@@ -68,7 +66,7 @@ namespace Snake.Engine.Models
 					default:
 						throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
 				}
-				_curretnDirection = direction;
+				_currentDirection = direction;
 			}
 		}
 
@@ -83,7 +81,7 @@ namespace Snake.Engine.Models
 
 		private bool IsOppositeDirection(Direction direction)
 		{
-			return _opositeDirections[direction] == _curretnDirection;
+			return _opositeDirections[direction] == _currentDirection;
 		}
 	}
 }

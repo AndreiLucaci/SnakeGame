@@ -1,6 +1,6 @@
-﻿namespace Snake.Engine
+﻿namespace BoxFever.Engine
 {
-	partial class SnakeGame
+	partial class BoxFeverGame
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -98,7 +98,7 @@
 			this.plus10.UseVisualStyleBackColor = true;
 			this.plus10.Click += new System.EventHandler(this.plus10_Click);
 			// 
-			// SnakeGame
+			// BoxFeverGame
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,8 +114,8 @@
 			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(344, 400);
 			this.MinimumSize = new System.Drawing.Size(344, 400);
-			this.Name = "SnakeGame";
-			this.Text = "s|n\'s Endless Snake Game";
+			this.Name = "BoxFeverGame";
+			this.Text = "s|n\'s Endless Player Game";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
 			this.ResumeLayout(false);

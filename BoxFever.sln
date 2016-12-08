@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake.Engine", "Snake.Engine\Snake.Engine.csproj", "{C7E513B4-1E32-404E-ACCB-E88A824AFEBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxFever.Engine", "BoxFever.Engine\BoxFever.Engine.csproj", "{C7E513B4-1E32-404E-ACCB-E88A824AFEBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

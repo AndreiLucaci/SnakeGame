@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Snake.Engine.Models
+namespace BoxFever.Engine.Models
 {
 	public class Board
 	{

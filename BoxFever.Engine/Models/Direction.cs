@@ -1,4 +1,4 @@
-﻿namespace Snake.Engine.Models
+﻿namespace BoxFever.Engine.Models
 {
 	public enum Direction
 	{
